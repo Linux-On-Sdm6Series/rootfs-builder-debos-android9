@@ -39,6 +39,17 @@ apt-mark hold qtubuntu-android
 yes | ubports-qa install xenial_-_gst-droid
 apt install -y nemo-qtmultimedia-plugins gstreamer1.0-droid
 
+# custom hfd-service
+mkdir -p /root/hfd
+wget https://build.lolinet.com/file/hfd/hfd-service-tools_0.1.1_armhf.deb -P /root/hfd/
+wget https://build.lolinet.com/file/hfd/hfd-service_0.1.1_armhf.deb -P /root/hfd/
+wget https://build.lolinet.com/file/hfd/libqt5feedback5-hfd_0.1.1_armhf.deb -P /root/hfd/
+wget https://build.lolinet.com/file/hfd/qml-module-hfd_0.1.1_armhf.deb -P /root/hfd/
+
+dpkg -i /root/hfd/*.deb
+rm -rf /root/hfd
+apt-mark hold hfd-service-tools hfd-service libqt5feedback5-hfd qml-module-hfd
+
 # Restore symlink
 rm /etc/resolv.conf
 mv /etc/resolv2.conf /etc/resolv.conf
