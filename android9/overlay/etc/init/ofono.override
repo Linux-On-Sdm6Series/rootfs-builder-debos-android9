@@ -6,4 +6,25 @@ stop on stopping dbus
 expect fork
 respawn
 
+pre-start script
+    while true
+    do
+        hw_status=$(getprop hwservicemanager.ready)
+        if [ "$hw_status" = "true" ] ; then
+            echo "hwservicemanager service running"
+            sleep 2
+            case "$(getprop persist.radio.multisim.config)" in
+                dsds|dsda) RIL_NUM_SIM_SLOTS=2 ;;
+                tsts) RIL_NUM_SIM_SLOTS=3 ;;
+                *) RIL_NUM_SIM_SLOTS=1 ;;
+            esac
+            mount -o bind "/etc/ofono/ril_subscription_${RIL_NUM_SIM_SLOTS}.conf" "/etc/ofono/ril_subscription.conf"
+            exit 0
+        fi
+        echo "Waiting for hwservicemanager service"
+        sleep 1
+    done
+    exit 1
+end script
+
 exec ofonod -P provision,udev*,dun*,smart*,hfp_bluez5,stktest,sap
