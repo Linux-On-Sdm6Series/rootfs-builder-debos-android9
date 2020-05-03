@@ -34,6 +34,11 @@ wget https://ci.ubports.com/job/ubports/job/gst-plugins-bad-packaging/job/xenial
 dpkg -i gstreamer1.0-hybris_1.8.3-1ubuntu0.3~overlay2_armhf.deb
 rm gstreamer1.0-hybris_1.8.3-1ubuntu0.3~overlay2_armhf.deb
 
+# Camera
+apt-mark hold qtubuntu-android
+yes | ubports-qa install xenial_-_gst-droid
+apt install -y nemo-qtmultimedia-plugins gstreamer1.0-droid
+
 # Restore symlink
 rm /etc/resolv.conf
 mv /etc/resolv2.conf /etc/resolv.conf
