@@ -24,6 +24,8 @@ apt remove -y qtubuntu-sensors
 apt install -y libsensorfw-qt5-hybris libsensorfw-qt5-configs libsensorfw-qt5-plugins libqt5sensors5-sensorfw
 # hfd-service
 apt install -y hfd-service libqt5feedback5-hfd hfd-service-tools
+# in-call audio
+apt install -y pulseaudio-modules-droid-hidl-28 audiosystem-passthrough
 
 # Restore symlink
 rm /etc/resolv.conf
