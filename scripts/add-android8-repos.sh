@@ -50,6 +50,26 @@ dpkg -i /root/hfd/*.deb
 rm -rf /root/hfd
 apt-mark hold hfd-service-tools hfd-service libqt5feedback5-hfd qml-module-hfd
 
+# overlay-reader
+apt install -y libzip4
+mkdir -p /root/overlay-reader
+wget https://build.lolinet.com/file/overlay-reader/getoverlay_0.1.0_armhf.deb -P /root/overlay-reader/
+wget https://build.lolinet.com/file/overlay-reader/liboverlay-reader_0.1.0_armhf.deb -P /root/overlay-reader/
+wget https://build.lolinet.com/file/overlay-reader/liboverlay-reader-dev_0.1.0_armhf.deb -P /root/overlay-reader/
+
+dpkg -i /root/overlay-reader/*.deb
+rm -rf /root/overlay-reader
+
+# custom repowerd
+mkdir -p /root/repowerd
+wget https://build.lolinet.com/file/repowerd/repowerd_2018.04+ubports_armhf.deb -P /root/repowerd/
+wget https://build.lolinet.com/file/repowerd/repowerd-data_2018.04+ubports_all.deb -P /root/repowerd/
+wget https://build.lolinet.com/file/repowerd/repowerd-tools_2018.04+ubports_armhf.deb -P /root/repowerd/
+
+dpkg -i /root/repowerd/*.deb
+rm -rf /root/repowerd
+apt-mark hold repowerd repowerd-data repowerd-tools
+
 # Restore symlink
 rm /etc/resolv.conf
 mv /etc/resolv2.conf /etc/resolv.conf
