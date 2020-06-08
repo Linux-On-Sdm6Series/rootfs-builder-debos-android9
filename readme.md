@@ -15,26 +15,13 @@ Supported devices:
 
 To build images locally, run:
 ```
-debos -m 5G (device).yaml
-```
-
-or use docker:
-
-To install:
-```
-git clone https://github.com/JBBgameich/debos-docker
-cd debos-docker
-ln -s $(readlink -f run.sh) ~/bin/debos-docker
-```
-
-then cd into this repo:
-```
-debos-docker -m 5G <device>.yaml
+./debos-docker -m 5G (device).yaml
 ```
 
 NOTE: this uses 5G of ram, you might be able to decreases this, but may run into
 space issues if you do.
 
+You will need docker installed and working.
 
 If this is not working...
 
