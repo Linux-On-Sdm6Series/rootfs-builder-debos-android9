@@ -21,3 +21,6 @@
 # Device nodes needed for graphics
 /dev/pmsg0                    rw,
 /dev/hwbinder                 rw,
+
+# Allow access to QT5 libs
+/usr/lib/@{multiarch}/qt5/**  m,
