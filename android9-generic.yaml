@@ -1,5 +1,5 @@
 {{- $architecture := or .architecture "armhf" -}}
-{{- $image := or .image "ubuntu-touch-android9-armhf.tar.gz" -}}
+{{- $image := or .image "ubuntu-touch-android9-armhf-$(date +"%m""%d"-"%H""%M").tar.gz" -}}
 
 architecture: {{ $architecture }}
 actions:
